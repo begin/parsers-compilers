@@ -14,6 +14,14 @@
 
 **Returns**: Token stream.
 
+**Concepts**
+
+- stream
+- tokens
+- token
+- lexical scoping
+- lexical context
+
 **Example**
 
 A JavaScript token stream for the string `abc{foo}xyz` might look something like this:
@@ -48,14 +56,6 @@ A JavaScript token stream for the string `abc{foo}xyz` might look something like
 ]
 ```
 
-**Concepts**
-
-- stream
-- tokens
-- token
-- lexical scoping
-- lexical context
-
 **Notes**
 
 - "Tokens" are objects that contain details about the text "captured" for the token, such as column and row, or line number and character position.
@@ -66,7 +66,15 @@ A JavaScript token stream for the string `abc{foo}xyz` might look something like
 
 > Parses a stream of tokens into an AST
 
-**Returns**: AST
+**Returns**: AST object
+
+**Concepts**
+
+- tree
+- nodes
+- node
+- dynamic scoping
+- dynamic context
 
 **Example**
 
@@ -110,23 +118,15 @@ A JavaScript AST for the string `abc{foo}xyz` might look something like this:
 }
 ```
 
-**Concepts**
-
-- tree
-- nodes
-- node
-- dynamic scoping
-- dynamic context
-
 **Notes**
 
 - Whereas token streams are "flat" arrays, a parser generates an _abstract syntax tree_ by giving the tokens in the stream a dynamic, or global, context
 
 ## Compiler
 
-> Creates a JavaScript function by converting an AST into a string of function statements and wrapping it with a boilerplate function body that defines the arguments the function can take. This generated function is then cached for re-use before being returned.
+> Creates a function by converting an AST into a string of function statements and wrapping it with a boilerplate function body that defines the arguments the function can take. This generated function is then cached for re-use before being returned.
 
-**Returns**: JavaScript function.
+**Returns**: Function
 
 **Concepts**
 
@@ -142,7 +142,7 @@ The goal of a compiler is to create a cached function that can be invoked one or
 
 > Invokes the function returned from a compiler with a given "context", producing a string where any placeholders or variables that may have been defined are replaced with actual values.
 
-**Returns**: String.
+**Returns**: String
 
 **Concepts**
 
