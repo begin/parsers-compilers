@@ -151,6 +151,7 @@ The goal of a compiler is to create a cached function that can be invoked one or
 
 ## Related
 
+- [the-super-tiny-compiler](https://github.com/thejameskyle/the-super-tiny-compiler)
 - **stringify**: typically refers to converting an object to a string representation of the object. Example: `{foo: 'bar'}` would convert to the string `'{"foo": "bar"}'`.
 - **assembler**: todo
 - **interpreter**: todo
