@@ -50,7 +50,7 @@ A JavaScript token stream for the string `abc{foo}xyz` might look something like
   },
   {
     type: 'text',
-    value: 'xyx',
+    value: 'xyz',
     position: {start: {column: 9 line: 0}, end: {column: 11, line: 0}}
   }
 ]
@@ -111,7 +111,7 @@ A JavaScript AST for the string `abc{foo}xyz` might look something like this:
     },
     {
       type: 'text',
-      value: 'xyx',
+      value: 'xyz',
       position: {start: {column: 9 line: 0}, end: {column: 11, line: 0}}
     }
   ]
