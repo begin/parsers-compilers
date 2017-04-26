@@ -34,7 +34,7 @@ A JavaScript token stream for the string `abc{foo}xyz` might look something like
     position: {start: {column: 1 line: 0}, end: {column: 3, line: 0}}
   },
   {
-    type: 'brace-open',
+    type: 'left-brace',
     value: '{',
     position: {start: {column: 4 line: 0}, end: {column: 4, line: 0}}
   },
@@ -44,7 +44,7 @@ A JavaScript token stream for the string `abc{foo}xyz` might look something like
     position: {start: {column: 5 line: 0}, end: {column: 7, line: 0}}
   },
   {
-    type: 'brace-close',
+    type: 'right-brace',
     value: '}',
     position: {start: {column: 8 line: 0}, end: {column: 8, line: 0}}
   },
@@ -93,7 +93,7 @@ A JavaScript AST for the string `abc{foo}xyz` might look something like this:
       type: 'brace',
       nodes: [
         {
-          type: 'brace-open',
+          type: 'left-brace',
           value: '{',
           position: {start: {column: 4 line: 0}, end: {column: 4, line: 0}}
         },
@@ -103,10 +103,10 @@ A JavaScript AST for the string `abc{foo}xyz` might look something like this:
           position: {start: {column: 5 line: 0}, end: {column: 7, line: 0}}
         },
         {
-          type: 'brace-close',
+          type: 'right-brace',
           value: '}',
           position: {start: {column: 8 line: 0}, end: {column: 8, line: 0}}
-        },
+        }
       ]
     },
     {
