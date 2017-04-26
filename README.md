@@ -23,13 +23,32 @@
 
 **Description**
 
-A token stream is an array of "tokens", which are objects that contain details about a specific substring that was "captured", such as column and row, or line number and character position.
+A token stream is an array of "tokens", where each "token" is an object that contain details about a specific substring that was "captured", such as column and row, or line number and character position.
+
+**Example token**
+
+```js
+{
+  type: 'text',
+  value: 'abc',
+  position: {
+    start: {
+      column: 1 
+      line: 1
+    }, 
+    end: {
+      column: 3, 
+      line: 1
+    }
+  }
+}
+```
 
 A token should also (and only) attempt to describe _basic lexical context_, such as character "type", which might be something like `text`, `number`, `escaped`, `delimiter`, or something similar.
 
 Lexers should not attempt to describe dynamic scope, like where a bracketed section begins or ends, this kind of thing is left to the parser and is better represented by an Abstract Syntax Tree (AST).
 
-**Example**
+**Example token stream**
 
 A JavaScript token stream for the string `abc{foo}xyz` might look something like this:
 
@@ -38,27 +57,27 @@ A JavaScript token stream for the string `abc{foo}xyz` might look something like
   {
     type: 'text',
     value: 'abc',
-    position: {start: {column: 1 line: 0}, end: {column: 3, line: 0}}
+    position: {start: {column: 1 line: 1}, end: {column: 3, line: 1}}
   },
   {
     type: 'left-brace',
     value: '{',
-    position: {start: {column: 4 line: 0}, end: {column: 4, line: 0}}
+    position: {start: {column: 4 line: 1}, end: {column: 4, line: 1}}
   },
   {
     type: 'text',
     value: 'foo',
-    position: {start: {column: 5 line: 0}, end: {column: 7, line: 0}}
+    position: {start: {column: 5 line: 1}, end: {column: 7, line: 1}}
   },
   {
     type: 'right-brace',
     value: '}',
-    position: {start: {column: 8 line: 0}, end: {column: 8, line: 0}}
+    position: {start: {column: 8 line: 1}, end: {column: 8, line: 1}}
   },
   {
     type: 'text',
     value: 'xyz',
-    position: {start: {column: 9 line: 0}, end: {column: 11, line: 0}}
+    position: {start: {column: 9 line: 1}, end: {column: 11, line: 1}}
   }
 ]
 ```
@@ -94,7 +113,7 @@ A JavaScript AST for the string `abc{foo}xyz` might look something like this:
     {
       type: 'text',
       value: 'abc',
-      position: {start: {column: 1 line: 0}, end: {column: 3, line: 0}}
+      position: {start: {column: 1 line: 1}, end: {column: 3, line: 1}}
     },
     {
       type: 'brace',
@@ -102,24 +121,24 @@ A JavaScript AST for the string `abc{foo}xyz` might look something like this:
         {
           type: 'left-brace',
           value: '{',
-          position: {start: {column: 4 line: 0}, end: {column: 4, line: 0}}
+          position: {start: {column: 4 line: 1}, end: {column: 4, line: 1}}
         },
         {
           type: 'text',
           value: 'foo',
-          position: {start: {column: 5 line: 0}, end: {column: 7, line: 0}}
+          position: {start: {column: 5 line: 1}, end: {column: 7, line: 1}}
         },
         {
           type: 'right-brace',
           value: '}',
-          position: {start: {column: 8 line: 0}, end: {column: 8, line: 0}}
+          position: {start: {column: 8 line: 1}, end: {column: 8, line: 1}}
         }
       ]
     },
     {
       type: 'text',
       value: 'xyz',
-      position: {start: {column: 9 line: 0}, end: {column: 11, line: 0}}
+      position: {start: {column: 9 line: 1}, end: {column: 11, line: 1}}
     }
   ]
 }
